@@ -1,18 +1,25 @@
 
-package ejercicio;
+package parcial;
 
 import java.util.Scanner;
 
 public class empleado {
-    String nombre, apellido, cargo;
-    int identificacion; 
+    private String nombre;
+    private int edad;
+    private String cargo;
+    private double salario;
+    private float porcentaje = 0;
+    private double salarioInc;
+    static int cont=0;
 
-    public empleado(String nombre, String apellido, String cargo, int identificacion) {
+    public empleado(String nombre, int edad, String cargo, double salario) {
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.edad = edad;
         this.cargo = cargo;
-        this.identificacion = identificacion;
+        this.salario = salario;
+        ++cont;
     }
+ 
 
     public String getNombre() {
         return nombre;
@@ -22,12 +29,12 @@ public class empleado {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public String getCargo() {
@@ -38,12 +45,45 @@ public class empleado {
         this.cargo = cargo;
     }
 
-    public int getIdentificacion() {
-        return identificacion;
+    public double getSalario() {
+        return salario;
     }
 
-    public void setIdentificacion(int identificacion) {
-        this.identificacion = identificacion;
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    
+    
+    public void ingresarDatosE(){
+        Scanner sc= new Scanner(System.in);
+        
+        System.out.println("Ingresar nombre del del empleado "+cont+": ");
+        nombre= sc.next();
+        System.out.println("Ingresar la edad del empleado "+cont+": ");
+        edad= sc.nextInt();
+        System.out.println("Ingresar el cargo del empleado "+cont+": ");
+        cargo= sc.next();
+        System.out.println("Ingresar el salario del empleado "+cont+": ");
+        salario= sc.nextDouble();
+        System.out.println("Ingresar el porcentaje de incrementacion "+cont+": ");
+        porcentaje=sc.nextFloat();
     }
     
-}
+        public void salarioIncrementado(){    
+            
+            double salarioIncr = (salario * porcentaje) / 100;
+            salarioInc = salarioIncr + salario;
+        }
+
+    
+    public void imprimirDatosE(){
+        
+        System.out.println("El nombre del empleado "+cont+" es: "+nombre);
+        System.out.println("La edad del empleado "+cont+" es: "+edad);
+        System.out.println("El cargo del empleado "+cont+" es: "+cargo);
+        System.out.println("El salario del empleado "+cont+" es: "+salario);
+        System.out.println("El salario incrementado del empleado "+cont+" es: "+salarioInc);
+    }
+}   
+
